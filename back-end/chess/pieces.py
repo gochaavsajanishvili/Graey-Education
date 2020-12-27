@@ -42,12 +42,16 @@ class Rook(Piece):
         Color.WHITE: '♜',
         Color.BLACK: '♖',
     }
+    can_castle = True
 
     def can_move(self, start: 'game.Spot', end: 'game.Spot', board: 'game.Board'):
         # @TODO: როცა ეღობება ფიგურა
         super().can_move(start, end, board)
         dy, dx = self.get_distance(start, end)
         return dy * dx == 0
+
+    def moved(self, ):
+        self.can_castle = False
 
 
 class Pawn(Piece):
